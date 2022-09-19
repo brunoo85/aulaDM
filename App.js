@@ -4,40 +4,15 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import Constants from 'expo-constants';
 import { FontAwesome5} from '@expo/vector-icons';
 
+import Header from './components/Header';
+import Stories from './components/Stories';
+
 export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <View style={styles.header}>
-        <Image style={styles.cringe} source={require('./assets/imagens/brunoo.png')}/>
-        <FontAwesome5 style={styles.beijo}name="kiss-wink-heart" size={25} color="black"/>
-        </View>
-        <View style={styles.stories}>
-          <View style={styles.story}>
-            <Image style={styles.story1} source={require('./assets/imagens/ines.jpg')}/>
-            <Text style={styles.textoStories}>Inês</Text>
-          </View>
-          <View style={styles.story}>
-            <Image style={styles.story1} source={require('./assets/imagens/gretchen.jpg')}/>
-            <Text style={styles.textoStories}>Gretchen</Text>
-          </View>
-          <View style={styles.story}>
-            <Image style={styles.story1} source={require('./assets/imagens/tuluana.jpg')}/>
-            <Text style={styles.textoStories}>Tula</Text>
-          </View>
-          <View style={styles.story}>
-            <Image style={styles.story1} source={require('./assets/imagens/chuu.jpg')}/>
-            <Text style={styles.textoStories}>Chuu</Text>
-          </View>
-          <View style={styles.story}>
-            <Image style={styles.story1} source={require('./assets/imagens/ladygaga.jpg')}/>
-            <Text style={styles.textoStories}>Gaga</Text>
-          </View>
-          <View style={styles.story}>
-            <Image style={styles.story1} source={require('./assets/imagens/jesus1.jpg')}/>
-            <Text style={styles.textoStories}>Inês</Text>
-          </View>
-        </View>
+        <Header/>
+        <Stories/>
         <View style={styles.feed}>
           <View style={styles.post}>
             <View style={styles.postHeader}>
