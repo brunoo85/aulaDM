@@ -1,35 +1,73 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image , FlatList} from 'react-native';
 
 export default function Stories() {
-    return (
+  const stories = [
+    {
+      id: 1,
+      nome: 'Ines',
+      src: require('../assets/imagens/ines.jpg'),
+    },
+    {
+      id: 2,
+      nome: 'Gretchen',
+      src: require('../assets/imagens/gretchen.jpg'),
+    },
+    {
+      id: 3,
+      nome: 'Tula',
+      src: require('../assets/imagens/tuluana.jpg'),
+    },
+    {
+      id: 4,
+      nome: 'Chuu',
+      src: require('../assets/imagens/chuu.jpg'),
+    },
+    {
+      id: 5,
+      nome: 'Gaga',
+      src: require('../assets/imagens/ladygaga.jpg'),
+    },
+    {
+      id: 6,
+      nome: 'Jojo',
+      src: require('../assets/imagens/jojo.jpg'),
+    },
+    {
+      id: 7,
+      nome: 'Lorelay',
+      src: require('../assets/imagens/lorelay.jpg'),
+    },
+    {
+      id: 8,
+      nome: 'Esponja',
+      src: require('../assets/imagens/bobbob.jpg'),
+    },
+    {
+      id: 9,
+      nome: 'Cachorro',
+      src: require('../assets/imagens/dog.jpg'),
+    },
+  ];
+
+  function renderItem({item}){
+    return <View style={styles.story}>
+    <Image style={styles.story1} source={item.src}/>
+    <Text style={styles.textoStories}>{item.nome}</Text>
+  </View>
+  }
+      return (
         <View style={styles.stories}>
-          <View style={styles.story}>
-            <Image style={styles.story1} source={require('../assets/imagens/ines.jpg')}/>
-            <Text style={styles.textoStories}>Inês</Text>
-          </View>
-          <View style={styles.story}>
-            <Image style={styles.story1} source={require('../assets/imagens/gretchen.jpg')}/>
-            <Text style={styles.textoStories}>Gretchen</Text>
-          </View>
-          <View style={styles.story}>
-            <Image style={styles.story1} source={require('../assets/imagens/tuluana.jpg')}/>
-            <Text style={styles.textoStories}>Tula</Text>
-          </View>
-          <View style={styles.story}>
-            <Image style={styles.story1} source={require('../assets/imagens/chuu.jpg')}/>
-            <Text style={styles.textoStories}>Chuu</Text>
-          </View>
-          <View style={styles.story}>
-            <Image style={styles.story1} source={require('../assets/imagens/ladygaga.jpg')}/>
-            <Text style={styles.textoStories}>Gaga</Text>
-          </View>
-          <View style={styles.story}>
-            <Image style={styles.story1} source={require('../assets/imagens/jojo.jpg')}/>
-            <Text style={styles.textoStories}>Inês</Text>
-          </View>
+          <FlatList
+          data={stories}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          />
         </View>
     );
+  
 }
 
 const styles = StyleSheet.create({
