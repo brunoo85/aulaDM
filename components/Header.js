@@ -2,9 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 import { FontAwesome5} from '@expo/vector-icons';
 
-var x;
 export default function Header() {
-    x=1;
     return (
         <View style={styles.header}>
             <Image style={styles.cringe} source={require('../assets/imagens/brunoo.png')}/>
