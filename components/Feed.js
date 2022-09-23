@@ -1,63 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
 import { FontAwesome5} from '@expo/vector-icons';
 
 export default function Feed() {
-  const feed = [
-    {
-      id: 1,
-      nome: 'Chuu do Loona',
-      imgPerfil: require('../assets/imagens/chuu.jpg'),
-      img: require('../assets/imagens/propostasChuu.jpeg'),
-      aspectRatio: 1.777,
-    },
-    {
-      id: 2,
-      nome: 'Laladydy Gagagaga',
-      imgPerfil: require('../assets/imagens/ladygaga.jpg'),
-      img: require('../assets/imagens/vaziaVulgar.jpg'),
-      aspectRatio: 1.777,
-    },
-    {
-      id: 3,
-      nome: 'Pantera Selvagem',
-      imgPerfil: require('../assets/imagens/ines.jpg'),
-      img: require('../assets/imagens/inesMeme.jpg'),
-      aspectRatio: 1.666,
-    },
-    {
-      id: 4,
-      nome: 'Viadinho das animações',
-      imgPerfil: require('../assets/imagens/bobbob.jpg'),
-      img: require('../assets/imagens/astro.jpg'),
-      aspectRatio: 1.589,
-    },
-    {
-      id: 5,
-      nome: 'Que tiro foi esse',
-      imgPerfil: require('../assets/imagens/jojo.jpg'),
-      img: require('../assets/imagens/raven.jpg'),
-      aspectRatio: 1.5,
-    },
-    {
-      id: 6,
-      nome: 'Senhorinha Drag',
-      imgPerfil: require('../assets/imagens/lorelay.jpg'),
-      img: require('../assets/imagens/encontro.jpg'),
-      aspectRatio: 1,
-    },
-  ];
+  const [feed, setFeed] = useState([]);
+
+  useEffect(function(){
+    async function getData(){
+      const response = await fetch('https://mobile.ect.ufrn.br:3000/feed');
+      const feedServidor = await response.json();
+       setFeed(feedServidor);
+    }
+    getData();
+  }, []);
 
   function renderItem({ item }){
     return <View style={styles.post}>
       <View style={styles.postHeader}>
         <View style={styles.postHeaderesquerda}>
-        <Image style={styles.postHeaderimg}source={item.imgPerfil}/>
-        <Text style={styles.nomeDoUsuario}>{item.nome}</Text>
+        <Image style={styles.postHeaderimg}source={{ uri: item.imgPerfilUri }}/>
+        <Text style={styles.nomeDoUsuario}>{item.nomeUsuario}</Text>
         </View>
         <FontAwesome5 name='ellipsis-h' size={16} color='black'/>
       </View>
-      <Image style={styles.postimg} aspectRatio={item.aspectRatio} source={item.img}/>
+      <Image style={styles.postimg} aspectRatio={item.aspectRatio} source={{uri: item.imgPostUri}}/>
       <View style={styles.footer}>
         <FontAwesome5 style={styles.footerIcon}name='heart' size={36} color='black'/>
         <FontAwesome5 style={styles.footerIcon}name='comment' size={36} color='black'/>

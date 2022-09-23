@@ -1,59 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image , FlatList} from 'react-native';
 
 export default function Stories() {
-  const stories = [
-    {
-      id: 1,
-      nome: 'Ines',
-      src: require('../assets/imagens/ines.jpg'),
-    },
-    {
-      id: 2,
-      nome: 'Gretchen',
-      src: require('../assets/imagens/gretchen.jpg'),
-    },
-    {
-      id: 3,
-      nome: 'Tula',
-      src: require('../assets/imagens/tuluana.jpg'),
-    },
-    {
-      id: 4,
-      nome: 'Chuu',
-      src: require('../assets/imagens/chuu.jpg'),
-    },
-    {
-      id: 5,
-      nome: 'Gaga',
-      src: require('../assets/imagens/ladygaga.jpg'),
-    },
-    {
-      id: 6,
-      nome: 'Jojo',
-      src: require('../assets/imagens/jojo.jpg'),
-    },
-    {
-      id: 7,
-      nome: 'Lorelay',
-      src: require('../assets/imagens/lorelay.jpg'),
-    },
-    {
-      id: 8,
-      nome: 'Esponja',
-      src: require('../assets/imagens/bobbob.jpg'),
-    },
-    {
-      id: 9,
-      nome: 'Cachorro',
-      src: require('../assets/imagens/dog.jpg'),
-    },
-  ];
+  const [stories, setStories] = useState([]);
+
+  useEffect(function(){
+    async function getData(){
+      const response = await fetch('https://mobile.ect.ufrn.br:3000/stories');
+      const storiesServidor = await response.json();
+      console.log(storiesServidor);
+      setStories(storiesServidor)
+    }
+    getData();
+  }, [])
 
   function renderItem({item}){
     return <View style={styles.story}>
-    <Image style={styles.story1} source={item.src}/>
-    <Text style={styles.textoStories}>{item.nome}</Text>
+    <Image style={styles.story1} source={{uri: item.imgPerfilUri}}/>
+    <Text style={styles.textoStories}>{item.nomeUsuario}</Text>
   </View>
   }
       return (
