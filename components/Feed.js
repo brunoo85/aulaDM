@@ -48,7 +48,7 @@ export default function Feed() {
           flex: 1,
         },
         post: {
-          backgroundColor:'#B0E298',
+          backgroundColor:'#FFFFFF',
       
         },
         postHeader: {
@@ -79,7 +79,7 @@ export default function Feed() {
         },
         footer:{
           height:45,
-          backgroundColor: '#B0E298',
+          backgroundColor: '#FFFFFF',
           flexDirection: 'row',
           alignItems: 'center',
           

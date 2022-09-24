@@ -38,12 +38,12 @@ const styles = StyleSheet.create({
     stories:{
       flexDirection: 'row',
       height: 90,
-      backgroundColor:'#B0E298',
+      backgroundColor:'#FFFFFF',
     },
     story: {
       height:90,
       width:90,
-      backgroundColor: '#B0E298',
+      backgroundColor: '#FFFFFF',
       alignItems: 'center',
     },
     story1:{
