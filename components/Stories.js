@@ -8,11 +8,10 @@ export default function Stories() {
     async function getData(){
       const response = await fetch('https://mobile.ect.ufrn.br:3000/stories');
       const storiesServidor = await response.json();
-      console.log(storiesServidor);
-      setStories(storiesServidor)
+       setStories(storiesServidor)
     }
     getData();
-  }, [])
+  }, []);
 
   function renderItem({item}){
     return <View style={styles.story}>
@@ -38,12 +37,12 @@ const styles = StyleSheet.create({
     stories:{
       flexDirection: 'row',
       height: 90,
-      backgroundColor:'#FFFFFF',
+      backgroundColor:'#B0E298',
     },
     story: {
       height:90,
       width:90,
-      backgroundColor: '#FFFFFF',
+      backgroundColor: 'white',
       alignItems: 'center',
     },
     story1:{

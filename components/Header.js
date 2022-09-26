@@ -2,11 +2,12 @@ import React from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 import { FontAwesome5} from '@expo/vector-icons';
 
-export default function Header() {
+
+export default function Header({navigation}) {
     return (
         <View style={styles.header}>
             <Image style={styles.cringe} source={require('../assets/imagens/brunoo.png')}/>
-            <FontAwesome5 style={styles.beijo}name="kiss-wink-heart" size={25} color="black"/>
+            <FontAwesome5 style={styles.beijo}name="kiss-wink-heart" size={25} color="black" onPress={()=>navigation.navigate('ChatListScreen')}/>
         </View>
     );
 }
