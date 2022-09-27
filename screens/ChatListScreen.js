@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { View , Image, StyleSheet, FlatList} from 'react-native';
+import { View , Image, StyleSheet, FlatList, Text, TouchableOpacity} from 'react-native';
 
 
 export default function ChatListScreen({navigation}){
@@ -9,16 +9,21 @@ export default function ChatListScreen({navigation}){
     useEffect(()=> {
         async function getData(){
             const response = await fetch('https://mobile.ect.ufrn.br:3000/chatList');
-            const chatList = await response.json();
-            setChatlist(chatlist);
+            const chatlistServidor = await response.json();
+            setChatlist(chatlistServidor);
+            console.log(chatlistServidor);
         }
         getData();
     },[]);
 
     function renderItem({item}){
-        return <View style={styles.chat}>
-            <Image></Image>
-        </View>;
+        return <TouchableOpacity style={styles.chat} onPress={() => navigation.navigate('ChatScreen')}>
+            <Image style={styles.image} source={{uri: item.imgPerfilUri}}/>
+                <View style={styles.textBox}>
+                    <Text style={styles.nome}>{item.nomeUsuario}</Text>
+                    <Text>{item.ultimaMensagem}</Text>
+                </View>
+            </TouchableOpacity>;
     }
 
 
@@ -32,7 +37,7 @@ export default function ChatListScreen({navigation}){
                 showsVerticalScrollIndicator={false}
             />
         </View>
-    );
+    )
 }
 
 const styles= StyleSheet.create({
@@ -41,9 +46,20 @@ const styles= StyleSheet.create({
         backgroundColor:'white',
     },
     chat:{
-        height: 60,
+        height: 90,
         flexDirection :'row',
-        backgroundColor:'blue',
+    },
+    image:{
+        height: 80,
+        width: 80,
+        margin: 5,
+        borderRadius: 40,
+    },
+    textBox:{
+        justifyContent: 'center',
+    },
+    nome:{
+        fontWeight: 'bold',
     }
 
 
