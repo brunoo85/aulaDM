@@ -6,7 +6,7 @@ export default function Stories() {
 
   useEffect(function(){
     async function getData(){
-      const response = await fetch('https://raw.githubusercontent.com/brunoo85/aulaDM/main/lista_story.json');
+      const response = await fetch('https://raw.githubusercontent.com/brunoo85/projeto_1.0/main/listaMenu.json');
       const storiesServidor = await response.json();
        setStories(storiesServidor)
     }
