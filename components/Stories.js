@@ -6,7 +6,7 @@ export default function Stories() {
 
   useEffect(function(){
     async function getData(){
-      const response = await fetch('https://raw.githubusercontent.com/brunoo85/aulaDM/main/lista_story.json');
+      const response = await fetch('https://mobile.ect.ufrn.br:3000/stories');
       const storiesServidor = await response.json();
        setStories(storiesServidor)
     }
@@ -16,7 +16,7 @@ export default function Stories() {
   function renderItem({item}){
     return <View style={styles.story}>
     <Image style={styles.story1} source={{uri: item.imgPerfilUri}}/>
-    <Text style={styles.textoStories}>{item.texto}</Text>
+    <Text style={styles.textoStories}>{item.nomeUsuario}</Text>
   </View>
   }
       return (

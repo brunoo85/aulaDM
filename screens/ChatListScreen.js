@@ -17,7 +17,7 @@ export default function ChatListScreen({navigation}){
     },[]);
 
     function renderItem({item}){
-        return <TouchableOpacity style={styles.chat} onPress={() => navigation.navigate('ChatScreen')}>
+        return <TouchableOpacity style={styles.chat} onPress={() => navigation.navigate('ChatScreen',{id:item.id})}>
             <Image style={styles.image} source={{uri: item.imgPerfilUri}}/>
                 <View style={styles.textBox}>
                     <Text style={styles.nome}>{item.nomeUsuario}</Text>
